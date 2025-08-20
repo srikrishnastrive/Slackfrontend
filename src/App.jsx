@@ -1,18 +1,21 @@
-import { useState } from 'react'
-import { Button } from './components/ui/button'
-import './App.css'
+
+
+
+
+
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { AppRoutes } from './Routes';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const queryClient = new QueryClient();
+
 
   return (
-    <>
-      <div>
-        <h1>Hi this is the slack messaging frontend</h1>
-        <Button>Click me</Button>
-      </div>
-      
-    </>
+    <QueryClientProvider client={queryClient}>
+      <AppRoutes/>
+    </QueryClientProvider>
+    
   )
 }
 
