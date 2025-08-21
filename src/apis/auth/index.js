@@ -3,7 +3,7 @@ import axiosConfig from "@/config/axiosConfig";
 
 export const signUpRequest = async ({email,password,username}) => {
     try {
-        const response = await axiosConfig.post('/users/singup',{email,password,username});
+        const response = await axiosConfig.post('users/signup',{email,password,username});
         return response.data;
     }
     catch(error){
@@ -14,7 +14,7 @@ export const signUpRequest = async ({email,password,username}) => {
 
 export const signInRequest = async ({email,password}) => {
     try {
-        const response = await axiosConfig.post('/users/signin',{email,password});
+        const response = await axiosConfig.post('users/signin',{email,password});
         return response.data;
     }
     catch(error){

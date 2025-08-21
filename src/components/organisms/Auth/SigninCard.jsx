@@ -22,7 +22,7 @@ export const SigninCard = ({
     
 
     return (
-        <Card classname="w-full h-full">
+        <Card className="w-full h-full">
             <CardHeader>
                 <CardTitle>Sign In</CardTitle>
                 <CardDescription>Sign in to access your account</CardDescription>
@@ -62,6 +62,7 @@ export const SigninCard = ({
                         type="email"
                         value={signinForm.email}
                         onChange={(e) => setSigninForm({ ...signinForm, email: e.target.value })}
+                        autoComplete="email"
                     />
                     <Input
                         disabled={isPending}
@@ -70,6 +71,7 @@ export const SigninCard = ({
                         type="password"
                         value={signinForm.password}
                         onChange={(e) => setSigninForm({ ...signinForm, password: e.target.value })}
+                        autoComplete="current-password" 
                     />
 
                     <Button className="w-full" disabled={isPending} size="lg" type="submit">    

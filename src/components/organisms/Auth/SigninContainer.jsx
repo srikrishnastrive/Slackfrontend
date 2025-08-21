@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 import { SigninCard } from './SigninCard';
-import { useSignin } from '@/hooks/apis/auth/UseSignup';
+import { useSignin } from '@/hooks/apis/auth/useSignin';
+
 
 export const SigninContainer = () => {
 
