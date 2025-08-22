@@ -1,14 +1,53 @@
-import { Avatar } from "@/components/ui/avatar";
-import { useAuth } from "@/hooks/context/useAuth"
-import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+// UserButton.jsx
+import { LogOutIcon, PencilIcon, SettingsIcon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { useAuth } from '@/hooks/context/useAuth';
+import { useToast } from '@/hooks/use-toast';
+import { useCreateWorkspaceModal } from '@/hooks/context/useCreateWorkspaceModal';
 
 export const UserButton = () => {
-    const {auth} = useAuth();
+  const navigate = useNavigate();
+  const { auth, logout } = useAuth();
+  const { toast } = useToast();
+  const { setOpenCreateWorkspaceModal } = useCreateWorkspaceModal();
 
-    return (
-        <Avatar>
-            <AvatarImage src={auth?.user?.avatar} />
-            <AvatarFallback>{auth.user.username[0]}</AvatarFallback>
+  function openWorkspaceCreateModal() {
+    setOpenCreateWorkspaceModal(true);
+  }
+
+  async function handleLogout() {
+    await logout();
+    toast({
+      title: 'Successfully signed out',
+      type: 'success',
+    });
+    navigate('/auth/signin');
+  }
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger className="outline-none relative">
+        <Avatar className="size-10 hover:opacity-65 transition">
+          <AvatarImage src={auth?.user?.avatar} />
+          <AvatarFallback>{auth?.user?.username[0]?.toUpperCase()}</AvatarFallback>
         </Avatar>
-    )
-}
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem onClick={openWorkspaceCreateModal}>
+          <PencilIcon className="size-4 mr-2" />
+          Create Workspace
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <SettingsIcon className="size-4 mr-2" />
+          Settings
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogout}>
+          <LogOutIcon className="size-4 mr-2" />
+          Logout
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};
