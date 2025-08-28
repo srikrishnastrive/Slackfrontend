@@ -1,11 +1,29 @@
+import { WorkspaceNavbar } from "@/components/organisms/Workspace/WorkspaceNavbar"
+import { WorkspacePanel } from "@/components/organisms/Workspace/WorkspacePanel"
 import { WorkspaceSidebar } from "@/components/organisms/Workspace/WorkspaceSidebar"
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable"
 
 export const WorkspaceLayout = ({children }) =>{ 
     return (
         <div className="h-[100vh]">
-            <div className="flex h-full">
+            <WorkspaceNavbar/>
+            <div className="flex h-[calc(100vh-40px)]">
                 <WorkspaceSidebar/>
-                {children}
+                 <ResizablePanelGroup direction="horizontal" autoSaveId={'workspace-resize'}>
+                    <ResizablePanel
+                        defaultSize={20}
+                        minSize={11}
+                        className='bg-[#5E2C5F]'
+                    >
+                        <WorkspacePanel />
+                    </ResizablePanel>
+                    <ResizableHandle withHandle/>
+                    <ResizablePanel
+                        minSize={20}
+                    >
+                        workpsace
+                    </ResizablePanel>
+                </ResizablePanelGroup>
             </div>
         </div>
     )
