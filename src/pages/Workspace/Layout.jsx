@@ -13,7 +13,7 @@ export const WorkspaceLayout = ({children }) =>{
                     <ResizablePanel
                         defaultSize={20}
                         minSize={11}
-                        className='bg-[#5E2C5F]'
+                       className='bg-[#5E2C5F]'
                     >
                         <WorkspacePanel />
                     </ResizablePanel>
