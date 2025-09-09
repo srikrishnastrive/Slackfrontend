@@ -18,29 +18,23 @@ const sideBarItemVariants = cva(
 );
 
 
-export const SideBarItem = ({
-    label,
-    id, // channelId
-    icon: Icon,
-    variant
-}) => {
+export const SideBarItem = ({ label, id, icon: Icon, variant }) => {
+  const { workspaceId } = useParams();
 
-
-    const {workspaceId} = useParams();
-
-    return (
-        <Button
-            variant="transparent"
-            size="sm"
-            className={cn(sideBarItemVariants({variant}))}
-        >
-            <Link
-            className='flex items-center gap-1.5'
-                to={`/workspaces/${workspaceId}/channels/${id}`}
-            >
-                <Icon className='size-3.5 mr-1' />
-                <span className='text-sm' >{label}</span>
-            </Link>
-        </Button>
-    );
+  return (
+    <Button
+      as="div" 
+      variant="transparent"
+      size="sm"
+      className={cn(sideBarItemVariants({ variant }))}
+    >
+      <Link
+        to={`/workspaces/${workspaceId}/channels/${id}`}
+        className="flex items-center gap-1.5"
+      >
+        <Icon className="size-3.5 mr-1" />
+        <span className="text-sm">{label}</span>
+      </Link>
+    </Button>
+  );
 };

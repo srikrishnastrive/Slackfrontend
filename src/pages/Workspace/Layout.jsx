@@ -2,6 +2,7 @@ import { WorkspaceNavbar } from "@/components/organisms/Workspace/WorkspaceNavba
 import { WorkspacePanel } from "@/components/organisms/Workspace/WorkspacePanel"
 import { WorkspaceSidebar } from "@/components/organisms/Workspace/WorkspaceSidebar"
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable"
+import { Channel } from "./Channel/Channel"
 
 export const WorkspaceLayout = ({children }) =>{ 
     return (
@@ -21,7 +22,7 @@ export const WorkspaceLayout = ({children }) =>{
                     <ResizablePanel
                         minSize={20}
                     >
-                        workpsace
+                       {children}
                     </ResizablePanel>
                 </ResizablePanelGroup>
             </div>

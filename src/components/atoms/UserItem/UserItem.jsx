@@ -28,6 +28,7 @@ export const UserItem = ({
 }) => {
     console.log('incoming label', label);
     const { workspace } = useCurrentWorkspace();
+    console.log(workspace+"member workspace");
 
     return (
         <Button

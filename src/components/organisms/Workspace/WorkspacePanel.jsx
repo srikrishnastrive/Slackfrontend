@@ -1,4 +1,5 @@
-import { SideBarItem } from "@/components/atoms/SideBarItem/SidebarItem";
+
+import { SideBarItem } from "@/components/atoms/SideBarItem/SideBarItem";
 import { UserItem } from "@/components/atoms/UserItem/UserItem";
 import { WorkspacePanelHeader } from "@/components/molecules/Workspace/WorkspacePanelHeader";
 import { WorkspacePanelSection } from "@/components/molecules/Workspace/WorkspacePanelSection";
@@ -49,13 +50,16 @@ export const WorkspacePanel = () => {
                     variant='default'
                 />
             </div>
-             <WorkspacePanelSection
-                label={'Channels'}
-                onIconClick={() => {setOpenCreateChannelModal(true);}}
-            >
-                {workspace?.channels?.map((channel) => {
-                    return <SideBarItem key={channel._id} icon={HashIcon} label={channel.name} id={channel._id} />;
-                })}
+             <WorkspacePanelSection label="Channels" onIconClick={() => setOpenCreateChannelModal(true)}>
+           
+            {workspace?.channels?.map((channel) => (
+                <SideBarItem
+                key={channel._id}
+                icon={HashIcon}
+                label={channel.name}
+                id={channel._id}
+                />
+            ))}
             </WorkspacePanelSection>
 
             <WorkspacePanelSection
